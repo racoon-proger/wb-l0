@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+    - POSTGRES_USER=wb_l0
+    - POSTGRES_PASSWORD=wb_l0
+    - POSTGRES_DB=wb_l0
+    ports:
+      - '5432:5432'
+    volumes: 
+      - db:/var/lib/postgresql/data
+
+  jetstream:
+    image: nats-streaming:latest
+    environment:
+      - STAN_CLUSTER_ID=test
+      - STAN_NATS_URL=nats://localhost:4222
+    command: ["--cluster_id", "wb_test"]
+    network_mode: "host"
+    ports:
+      - "4222:4222"
+    restart: unless-stopped
+volumes:
+  db:
+    driver: local
