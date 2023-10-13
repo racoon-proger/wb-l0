@@ -18,7 +18,7 @@ import (
 	"github.com/racoon-proger/wb-l0/internal/domain"
 	server "github.com/racoon-proger/wb-l0/internal/server/http"
 	"github.com/racoon-proger/wb-l0/internal/service"
-	"github.com/racoon-proger/wb-l0/storage"
+	"github.com/racoon-proger/wb-l0/internal/storage"
 )
 
 type configuration struct {
